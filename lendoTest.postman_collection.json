@@ -1,0 +1,214 @@
+{
+	"info": {
+		"_postman_id": "63560086-3e9d-4d03-924f-9f60a7771d65",
+		"name": "lendoTest",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12729636"
+	},
+	"item": [
+		{
+			"name": "signin",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \r\n \"name\":\"bassem\",\r\n \"password\":\"123\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8087/api/auth/signin",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8087",
+					"path": [
+						"api",
+						"auth",
+						"signin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "signup",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n        \"id\": 1,\r\n        \"name\": \"bassem\",\r\n        \"email\": \"bassem@gmail.com\",\r\n        \"password\": \"123\"\r\n    }"
+				},
+				"url": {
+					"raw": "http://localhost:8087/api/auth/signup",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8087",
+					"path": [
+						"api",
+						"auth",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAllUsers",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJiYXNzZW0iLCJpYXQiOjE3MDI3NDYyNDksImV4cCI6MTcwMjgzNjI0OX0.CyhVfJabtNXSegqsJopk8-8lBV_u3Ww4b3T4Kb_0aIAY17p83yLaDwTFEd7kp03KEr2URKli_pmLebb24wyqJw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"disabled": true
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTY2Nzc0MTcxNSwiZXhwIjoxNjY3ODI4MTE1fQ.gIxJn3NjeIgtMQYPJ5z9cv3p7OQ1lt75LSRMjuIF91PKxiXVKaAN5G9dH6fZsCI5iqPP30PW_E7TuIeZWuw_oQ"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8087/users/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8087",
+					"path": [
+						"users",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAllPosts",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"disabled": true
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTY2Nzc0MTcxNSwiZXhwIjoxNjY3ODI4MTE1fQ.gIxJn3NjeIgtMQYPJ5z9cv3p7OQ1lt75LSRMjuIF91PKxiXVKaAN5G9dH6fZsCI5iqPP30PW_E7TuIeZWuw_oQ"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8087/posts/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8087",
+					"path": [
+						"posts",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAllComments",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTcwMjc0Mjg4NSwiZXhwIjoxNzAyODMyODg1fQ.pYXZiwm85I9SvV5h8OTzqiQCdZxjT8d4u7L4EXUWj4ZBTGUEjvNCIFlNx7Y93SFFBI2TaY7G8NsgnQY3JzMfBQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJEci4gQW1yaXQgS2hhbiIsImlhdCI6MTY2NzcyNzY2NSwiZXhwIjoxNjY3ODE0MDY1fQ.8-DCMSjYVr0d0_r3adZju4TW-S1ee9fz_vzuTk2xOHNwzNIQMwtnnqL6rkj1jyNMvXJIa17R3jge9vd8n9-TNw"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8087/comments/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8087",
+					"path": [
+						"comments",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getCommentByPost",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "getPostsByUser",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTcwMjc0MzM1NywiZXhwIjoxNzAyODMzMzU3fQ.zRYbXiVKV3j-fsiaTfn_wK2gb7Arfoa3EUCbV4ZN1kqwChWJfiw34Gp9N64SyX8ICAQvcmq-zyX9eR-kYoUiJQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8087/users/1/posts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8087",
+					"path": [
+						"users",
+						"1",
+						"posts"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
