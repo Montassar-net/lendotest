@@ -1,0 +1,5 @@
+package com.montassar.coderbyte.controller;
+
+public class AuthController {
+
+}

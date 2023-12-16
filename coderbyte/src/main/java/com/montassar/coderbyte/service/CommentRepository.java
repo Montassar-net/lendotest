@@ -9,5 +9,5 @@ import com.montassar.coderbyte.model.Comment;
 
 @Repository
 public interface CommentRepository extends JpaRepository<Comment, Long> {
-   /// List<Comment> findByPostId(Long postId);
+        List<Comment> findByPostId(Long postId);
 }

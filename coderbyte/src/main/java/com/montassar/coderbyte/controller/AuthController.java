@@ -1,0 +1,86 @@
+package com.montassar.coderbyte.controller;
+
+
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
+
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.montassar.coderbyte.model.LoginRequest;
+import com.montassar.coderbyte.model.UserInfo;
+import com.montassar.coderbyte.security.jwt.JwtUtils;
+import com.montassar.coderbyte.security.services.UserDetailsImpl;
+import com.montassar.coderbyte.service.UserInfoRepository;
+
+
+
+
+@CrossOrigin(origins = "*", maxAge = 3600)
+@RestController
+@RequestMapping("/api/auth")
+public class AuthController {
+	@Autowired
+	AuthenticationManager authenticationManager;
+
+	@Autowired
+	UserInfoRepository userInfoRepository;
+
+
+
+	@Autowired
+	PasswordEncoder encoder;
+
+	@Autowired
+	JwtUtils jwtUtils;
+
+	@PostMapping("/signin")
+	public ResponseEntity<String> authenticateUser( @RequestBody LoginRequest loginRequest) {
+
+		Authentication authentication = authenticationManager.authenticate(
+				new UsernamePasswordAuthenticationToken(loginRequest.getName(), loginRequest.getPassword()));
+
+		SecurityContextHolder.getContext().setAuthentication(authentication);
+		String jwt = jwtUtils.generateJwtToken(authentication);
+		
+		UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();		
+	
+
+	    return new ResponseEntity<>(jwt, HttpStatus.OK);
+	}
+
+	@PostMapping("/signup")
+	public ResponseEntity<?> registerUser( @RequestBody UserInfo signUpRequest) {
+		if (userInfoRepository.existsByName(signUpRequest.getName())) {
+			return ResponseEntity
+					.badRequest()
+					.body("Alert: Username  already exists!");
+		}
+
+		if (userInfoRepository.existsByEmail(signUpRequest.getEmail())) {
+			return ResponseEntity
+					.badRequest()
+					.body("Alert: Email already exists!");
+		}
+
+       signUpRequest.setPassword(encoder.encode(signUpRequest.getPassword()));
+
+		userInfoRepository.save(signUpRequest);
+
+		return ResponseEntity.ok("User added successfuly");
+	}
+}

@@ -6,5 +6,5 @@ import java.util.List;
 import com.montassar.coderbyte.model.Post;
 @Repository
 public interface PostRepository extends JpaRepository<Post, Long> {
-   /// List<Post> findByUserId(Long userId);
+   List<Post> findByUserId(Long userId);
 }

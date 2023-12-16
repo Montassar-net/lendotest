@@ -1,0 +1,40 @@
+package com.montassar.coderbyte.model;
+
+import jakarta.persistence.Entity; 
+import jakarta.persistence.GeneratedValue; 
+import jakarta.persistence.GenerationType; 
+import jakarta.persistence.Id; 
+import lombok.AllArgsConstructor; 
+import lombok.Data; 
+import lombok.NoArgsConstructor; 
+  
+@Entity
+public class UserInfo { 
+  
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY) 
+    private int id; 
+    private String name; 
+    private String email; 
+    private String password; 
+    private String roles;
+    
+	public UserInfo() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public UserInfo(int id, String name, String email, String password, String roles) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.email = email;
+		this.password = password;
+		this.roles = roles;
+	} 
+	
+	
+    
+    
+  
+} 

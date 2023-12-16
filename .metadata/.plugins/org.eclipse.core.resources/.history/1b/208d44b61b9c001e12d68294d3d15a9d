@@ -1,0 +1,5 @@
+package com.montassar.coderbyte.security;
+
+public class UserInfoService {
+
+}

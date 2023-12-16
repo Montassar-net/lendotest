@@ -26,8 +26,8 @@ public class UserController
         return userRepository.findAll();
     }
 
-   /* @GetMapping("/{id}/posts")
+    @GetMapping("/{id}/posts")
     public List<Post> getPostByUserId(@PathVariable Long id){
        return postRepository.findByUserId(id);
-    }*/
+    }
 }

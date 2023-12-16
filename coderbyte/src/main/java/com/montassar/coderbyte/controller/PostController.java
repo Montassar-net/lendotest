@@ -27,9 +27,9 @@ public class PostController
     public List<Post> getAllPosts(){
         return PostRepository.findAll();
     }
-   /* @GetMapping("/{id}/comments")
+    @GetMapping("/{postId}/comments")
     public List<Comment> getCommentByPostId(@PathVariable Long postId){
        return CommentRepository.findByPostId(postId);
-    }*/
+    }
 
 }

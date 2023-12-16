@@ -1,0 +1,5 @@
+package com.montassar.coderbyte.model;
+
+public class AuthRequest {
+
+}
