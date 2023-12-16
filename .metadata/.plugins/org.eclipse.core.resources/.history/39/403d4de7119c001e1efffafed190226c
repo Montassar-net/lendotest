@@ -1,0 +1,29 @@
+package com.montassar.coderbyte.model;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import jakarta.persistence.Id;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Entity
+@Data 
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+@Table(name = "comments") 
+public class Comment {
+
+    @Id
+    private Long id;
+
+    private Long postId;
+
+    private String name;
+
+    private String email;
+
+    private String body;
+}

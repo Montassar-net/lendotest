@@ -1,0 +1,24 @@
+package com.montassar.coderbyte.service;
+
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+import java.util.List;
+import com.montassar.coderbyte.model.User;
+import com.montassar.coderbyte.model.Post;
+
+@Repository
+public interface UserRepository extends JpaRepository<User, Long> {
+
+    // Find user by email address
+    User findByEmail(String email);
+
+    // Filter posts for a user (assuming you have a Post entity linked to User)
+    List<Post> findPostsByUser(User user);
+
+    // Alternatively, you could use method naming conventions:
+    List<Post> findByUser(User user);
+
+    // (Optional) Filter posts by additional criteria (e.g., status)
+    List<Post> findByUserAndStatus(User user, String status);
+}
